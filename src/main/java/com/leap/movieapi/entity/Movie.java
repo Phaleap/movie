@@ -1,6 +1,5 @@
 package com.leap.movieapi.entity;
 
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -28,21 +27,27 @@ public class Movie {
     @Max(value = 10, message = "Rating must be at most 10")
     private Double rating;
 
-    public Movie(){}
+    private String imageName;
 
-    public Movie(Long id, String title, String genre, Integer year, Double rating){
+    public Movie() {}
+
+    public Movie(Long id, String title, String genre, Integer year, Double rating, String imageName) {
         this.id = id;
         this.title = title;
         this.genre = genre;
         this.year = year;
         this.rating = rating;
+        this.imageName = imageName;
     }
-    public Long getId(){
+
+    public Long getId() {
         return id;
     }
-    public void setId(Long id){
+
+    public void setId(Long id) {
         this.id = id;
     }
+
     public String getTitle() {
         return title;
     }
@@ -73,5 +78,13 @@ public class Movie {
 
     public void setRating(Double rating) {
         this.rating = rating;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
     }
 }

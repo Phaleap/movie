@@ -76,9 +76,16 @@ public class MovieController {
         return service.createMovie(movie);
     }
 
-    @PutMapping("/{id}")
-    public Movie updateMovie(@PathVariable Long id, @RequestBody Movie movie) {
-        return service.updateMovie(id, movie);
+    @PutMapping(value = "/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public Movie updateMovie(
+            @PathVariable Long id,
+            @RequestParam("title") String title,
+            @RequestParam("genre") String genre,
+            @RequestParam("year") Integer year,
+            @RequestParam("rating") Double rating,
+            @RequestParam(value = "image", required = false) MultipartFile image
+    ) throws IOException {
+        return service.updateMovie(id, title, genre, year, rating, image);
     }
 
     @DeleteMapping("/{id}")
